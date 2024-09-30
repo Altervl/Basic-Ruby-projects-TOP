@@ -1,15 +1,12 @@
 def caesar_cipher(str, step)
-  arr = str.split('')
-  alphabet = ('a'..'z').to_a
-  ciphered_str = arr.map do |char|
-    letter = char.downcase
-    if ('a'..'z').include?(letter)
-      index = alphabet.index(letter) + step
-      index -= 26 if index > 25
+  ciphered_str = str.split("").map do |char|
+    if ('a'..'z').include?(char.downcase)
+      ciphered_code = char.downcase.ord + step
+      ciphered_code -= 26 if ciphered_code > 122
       if char == char.upcase
-        alphabet[index].upcase
+        ciphered_code.chr.upcase
       else
-        alphabet[index]
+        ciphered_code.chr
       end
     else
       char
