@@ -6,7 +6,11 @@ def caesar_cipher(str, step)
     if ('a'..'z').include?(letter)
       index = alphabet.index(letter) + step
       index -= 26 if index > 25
-      alphabet[index]
+      if char == char.upcase
+        alphabet[index].upcase
+      else
+        alphabet[index]
+      end
     else
       char
     end
