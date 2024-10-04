@@ -1,27 +1,23 @@
 def bubble_sort(array)
-  # flag for swapping places
-  swap = true
-  
-  # save array size value for later use
-  n = array.size
+  # init the array check boundary
+  boundary = array.size - 1
 
   # run the loop while replacements in array occur
-  while swap
-    # set the flag to false on every iteration
-    swap = false
+  while boundary > 0
+    # variable for tracking last item swapping occured
+    last_swap_index = 0
 
     # run through the array until main loop stops, skip the last item
-    (n - 1).times do |i|
+    (1..boundary).each do |i|
       # compare adjacent items, swap their places if they're out of order
-      # set the flag to true
-      if array[i] > array[i + 1]
-        array[i], array[i + 1] = array[i + 1], array[i]
-        swap = true
+      if array[i] < array[i - 1]
+        array[i], array[i - 1] = array[i - 1], array[i]
+        # set m equal to swapped item's index
+        last_swap_index = i
       end
     end
-    # optimization: skip the last checked item on next iteration
-    # because it's already in place
-    n -= 1
+    # optimization: set next check boundary to m, skip remaining elements
+    boundary = last_swap_index
   end
 
   # when main loop ends return sorted array
@@ -29,4 +25,4 @@ def bubble_sort(array)
 end
 
 # print the resulting object in one line
-p bubble_sort([3, 2, 5, 7, 1, 9])
+p bubble_sort([4,3,78,2,0,2])
