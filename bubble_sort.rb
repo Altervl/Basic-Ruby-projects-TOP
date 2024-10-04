@@ -5,19 +5,19 @@ def bubble_sort(array)
   # run the loop while replacements in array occur
   while boundary > 0
     # variable for tracking last item swapping occured
-    last_swap_index = 0
+    swap_index = 0
 
     # run through the array until main loop stops, skip the last item
     (1..boundary).each do |i|
       # compare adjacent items, swap their places if they're out of order
       if array[i] < array[i - 1]
         array[i], array[i - 1] = array[i - 1], array[i]
-        # set m equal to swapped item's index
-        last_swap_index = i
+        # set swap_index equal to swapped item's index
+        swap_index = i
       end
     end
-    # optimization: set next check boundary to m, skip remaining elements
-    boundary = last_swap_index
+    # optimization: set next check boundary to swap_index, skip remaining elements
+    boundary = swap_index
   end
 
   # when main loop ends return sorted array
