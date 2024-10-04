@@ -1,0 +1,1 @@
+A bunch of Ruby exercises on string encrypting, substing counting, item searching and array sorting. Done on The Odin Project's Ruby course.
