@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 def stock_picker(prices)
-  return "not enough data" if prices.size <= 1
-  
+  return 'not enough data' if prices.size <= 1
+
   min_price = prices[0]
   buy_day = 0
   sell_day = 1
@@ -8,22 +10,20 @@ def stock_picker(prices)
 
   prices.each_with_index do |price, day|
     # Check for new min price
-    if price < min_price
-      min_price = price
-    end
+    min_price = price if price < min_price
 
     # Calculate profit for current day
     profit = price - min_price
 
     # Update max_profit and buy, sell days if current day profit is better
-    if profit > max_profit
-      max_profit = profit
-      buy_day = prices.index(min_price)
-      sell_day = day
-    end
+    next unless profit > max_profit
+
+    max_profit = profit
+    buy_day = prices.index(min_price)
+    sell_day = day
   end
 
   [buy_day, sell_day]
 end
 
-p stock_picker([17,3,6,9,15,8,6,1,10])
+p stock_picker([17, 3, 6, 9, 15, 8, 6, 1, 10])

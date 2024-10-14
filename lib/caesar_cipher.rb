@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 def caesar_cipher(str, step)
-  arr = str.split('')
   alphabet = ('a'..'z').to_a
-  ciphered_str = arr.map do |char|
+  ciphered_str = str.split('').map do |char|
     letter = char.downcase
     if ('a'..'z').include?(letter)
       index = alphabet.index(letter) + step
@@ -18,4 +19,4 @@ def caesar_cipher(str, step)
   ciphered_str.join
 end
 
-puts caesar_cipher("What a string!", 5)
+puts caesar_cipher('What a string!', 5)
